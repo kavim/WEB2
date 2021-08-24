@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+    <html xmlns:th="https://www.thymeleaf.org/">
+
+    <h1>Hola, mundo!</h1>
+
+    <hr>
+
+    <h1 th:each="postagem : ${postagens}">
+        <span th:text="${postagem.autor}"></span>
+        <br>
+        <span th:text="${postagem.titulo}"></span>
+        <br>
+        <span th:text="${postagem.texto}"></span>
+        <br>
+        <span th:text="${postagem.data}"></span>
+    </h1>
+</html>
