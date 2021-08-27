@@ -5,6 +5,7 @@ import com.webii.webholamundo.services.blogEvertonServices;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.webii.webholamundo.repository.web2Repository;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,7 +22,7 @@ public class blogEvertonServiceImpl implements blogEvertonServices {
     }
 
     @Override
-    public Postagens findById(long id) {
+    public Postagens findById(int id) {
 
         return blogEvertonRepository.findById(id).get();
     }

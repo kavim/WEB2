@@ -7,7 +7,7 @@ import java.util.List;
 public interface blogEvertonServices {
 
     List<Postagens> findAll();
-    Postagens findById(long id);
+    Postagens findById(int id);
     Postagens save(Postagens postagens);
 
 }

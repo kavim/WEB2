@@ -7,30 +7,30 @@ import javax.validation.constraints.NotBlank;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "Postagens")
+@Table(name = "postagens")
 
 public class Postagens {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
 
     @NotBlank
     private String titulo;
     @NotBlank
     private String autor;
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MMyyyy")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "y-m-d")
     private LocalDate data;
     //obrigatório e campo de texto muito grande
 
-    @Lob
+    @NotBlank
     private String texto;
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
