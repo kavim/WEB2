@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 @Entity
@@ -16,8 +17,20 @@ public class Postagens {
 
     @NotBlank
     private String titulo;
+
     @NotBlank
     private String autor;
+
+    public int getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(int tipo) {
+        this.tipo = tipo;
+    }
+
+    @NotNull
+    private int tipo;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "y-m-d")
     private LocalDate data;

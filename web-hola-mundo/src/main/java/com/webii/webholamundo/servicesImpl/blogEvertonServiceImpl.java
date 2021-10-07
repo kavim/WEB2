@@ -32,4 +32,14 @@ public class blogEvertonServiceImpl implements blogEvertonServices {
 
         return blogEvertonRepository.save(postagens);
     }
+
+    @Override
+    public List<Postagens> findPostagensByTipo(int tipo) {
+        return blogEvertonRepository.findPostagensByTipo(tipo);
+    }
+
+    @Override
+    public Postagens deleteById(int id) {
+        return deleteById(id);
+    }
 }

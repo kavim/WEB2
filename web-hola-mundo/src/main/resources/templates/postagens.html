@@ -33,6 +33,15 @@
                 <li class="nav-item">
                     <a class="nav-link active" href="/postagem/create">Nova postagem</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="/postagem/tipo/1">tipo 1</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="/postagem/tipo/2">tipo 2</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout">Sair</a>
+                </li>
             </ul>
         </div>
     </div>
@@ -45,6 +54,9 @@
             <li class="breadcrumb-item active" aria-current="page">Postagens</li>
         </ol>
     </nav>
+    <div class="row">
+        <th:block th:include="alerts"></th:block>
+    </div>
     <div class="row">
         <div class="col-12">
             <h2 th:if="${postagens.empty}">ThereIsNoPostagens</h2>
@@ -64,7 +76,11 @@
                     <div>
                         <i class="bi bi-calendar-event"></i> <span th:text="${postagem.getData()}"></span>
                     </div>
-                    <a th:href="@{postagem/{id}(id=${postagem.getId()})}" class="btn btn-outline-success">Read <i class="bi bi-arrow-right-short"></i></a>
+                    <div>
+                        <a th:href="@{postagem/{id}(id=${postagem.getId()})}" class="btn btn-outline-success">Read <i class="bi bi-arrow-right-short"></i></a>
+                        <a th:href="@{postagem/edit/{id}(id=${postagem.getId()})}" class="btn btn-outline-warning">Edit <i class="bi bi-pen"></i></a>
+                        <a th:href="@{postagem/delete/{id}(id=${postagem.getId()})}" class="btn btn-outline-danger">Delete <i class="bi bi-trash"></i></a>
+                    </div>
                 </div>
             </div>
         </div>

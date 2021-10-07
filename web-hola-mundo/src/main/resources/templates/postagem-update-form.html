@@ -48,22 +48,23 @@
 
             <th:block th:include="alerts"></th:block>
 
-            <form method="post">
+            <form method="post" action="/postagem/update">
+                <input type="hidden" name="id" th:value="${id}">
                 <div class="mb-3">
                     <label for="tipo" class="form-label">Tipo</label>
-                    <input type="number" class="form-control" id="tipo" name="tipo">
+                    <input type="number" class="form-control" id="tipo" name="tipo" th:value="${tipo}">
                 </div>
                 <div class="mb-3">
                     <label for="titulo" class="form-label">Titulo</label>
-                    <input type="text" class="form-control" id="titulo" name="titulo">
+                    <input type="text" class="form-control" id="titulo" name="titulo" th:value="${titulo}">
                 </div>
                 <div class="mb-3">
                     <label for="autor" class="form-label">Autor</label>
-                    <input type="text" class="form-control" id="autor" name="autor">
+                    <input type="text" class="form-control" id="autor" name="autor" th:value="${autor}">
                 </div>
                 <div class="mb-3">
                     <label class="form-check-label" for="texto">texto</label><br>
-                    <textarea name="texto" id="texto" cols="30" rows="5"></textarea>
+                    <textarea name="texto" id="texto" cols="30" rows="5" th:text="${texto}"></textarea>
                 </div>
                 <button type="submit" class="btn btn-success">Dale</button>
             </form>
