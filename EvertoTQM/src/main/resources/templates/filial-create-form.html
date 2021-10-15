@@ -1,0 +1,25 @@
+<th:block th:include="header"></th:block>
+<!-- Page content wrapper-->
+<div id="page-content-wrapper">
+    <!-- Top navigation-->
+    <th:block th:include="nav"></th:block>
+    <!-- Page content-->
+    <div class="container-fluid">
+        <form method="post" action="/filial/store">
+            <div class="mb-3">
+                <label for="name" class="form-label">name</label>
+                <input type="text" class="form-control" id="name" name="name">
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label"><email></email></label>
+                <input type="text" class="form-control" id="email" name="email">
+            </div>
+            <div class="mb-3">
+                <label for="city" class="form-label">city</label>
+                <input type="city" class="form-control" id="city" name="city">
+            </div>
+            <button type="submit" class="btn btn-success">Dale</button>
+        </form>
+    </div>
+</div>
+<th:block th:include="footer"></th:block>

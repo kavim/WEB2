@@ -74,11 +74,11 @@
                 </div>
                 <div class="card-footer px-2 bg-white d-flex justify-content-between px-2">
                     <div>
-                        <i class="bi bi-calendar-event"></i> <span th:text="${postagem.getData()}"></span>
+                        <i class="bi bi-calendar-event"></i> <span th:text="${postagem.getData()}"></span> | <i class="bi bi-tags-fill"></i> <span th:text="${postagem.getTipo()}"></span>
                     </div>
                     <div>
                         <a th:href="@{postagem/{id}(id=${postagem.getId()})}" class="btn btn-outline-success">Read <i class="bi bi-arrow-right-short"></i></a>
-                        <a th:href="@{postagem/edit/{id}(id=${postagem.getId()})}" class="btn btn-outline-warning">Edit <i class="bi bi-pen"></i></a>
+                        <a th:href="@{postagem/edit/{id}(id=${postagem.getId()})}" class="btn btn-outline-warning">Edit\ <i class="bi bi-pen"></i></a>
                         <a th:href="@{postagem/delete/{id}(id=${postagem.getId()})}" class="btn btn-outline-danger">Delete <i class="bi bi-trash"></i></a>
                     </div>
                 </div>

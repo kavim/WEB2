@@ -22,8 +22,8 @@ public class blogEvertonController {
     web2Repository blogEvertonRepository;
 
     @RequestMapping("/")
-    public String home(){
-        return "Hello World!";
+    public ModelAndView home(){
+        return this.getPostagens();
     }
 
     @RequestMapping(value = "/postagens", method = RequestMethod.GET)
@@ -65,7 +65,7 @@ public class blogEvertonController {
         return "redirect:/postagens";
     }
 
-    @RequestMapping(value = "/postagens/tipo/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/postagem/tipo/{id}", method = RequestMethod.GET)
     public ModelAndView getPostagensByTipo(@PathVariable("id") int id) {
         ModelAndView mv = new ModelAndView("postagens");
         List<Postagens> postagens = blogEvertonRepository.findPostagensByTipo(id);
@@ -87,6 +87,7 @@ public class blogEvertonController {
     public ModelAndView editPostagem(@PathVariable("id") int id) {
         ModelAndView mv = new ModelAndView("postagem-update-form");
         Optional<Postagens> postagem = blogEvertonRepository.findById(id);
+        mv.addObject("id", postagem.get().getId());
         mv.addObject("autor", postagem.get().getAutor());
         mv.addObject("titulo", postagem.get().getTitulo());
         mv.addObject("data", postagem.get().getData());

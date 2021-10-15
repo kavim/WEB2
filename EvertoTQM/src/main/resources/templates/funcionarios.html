@@ -1,0 +1,87 @@
+<th:block th:include="header"></th:block>
+<!-- Page content wrapper-->
+<div id="page-content-wrapper">
+    <!-- Top navigation-->
+    <th:block th:include="nav"></th:block>
+    <!-- Page content-->
+    <div class="container-fluid">
+        <div class="row p-3">
+            <div class="col-12 d-flex justify-content-between p-2">
+                <h3>Funcionarios</h3><a class="btn btn-success" href="/funcionario/create"><i class="bi bi-folder-plus"></i> Novo</a>
+            </div>
+            <div class="col-12">
+                <th:block th:include="alerts"></th:block>
+            </div>
+            <div class="col-12 col-md-6">
+                <form action="/funcionario/search" method="post">
+                    <div class="input-group mb-3">
+                        <input aria-describedby="basic-addon1" aria-label="" class="form-control" placeholder="pesquisar..."
+                               type="text" name="search">
+                        <div class="input-group-prepend">
+                            <button class="btn btn-outline-dark" type="submit"><i class="bi bi-search"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-12">
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nome</th>
+                        <th>Email</th>
+                        <th>fone</th>
+                        <th>Setor</th>
+                        <th>Filial</th>
+                        <th class="text-center">Opts</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="funcionario : ${funcionarios}">
+                        <td th:text="${funcionario.id}"/>
+                        <td th:text="${funcionario.name}"/>
+                        <td th:text="${funcionario.email}"/>
+                        <td th:text="${funcionario.phone}"/>
+                        <td th:text="${funcionario.sector}"/>
+                        <td th:text="${funcionario.filial?.name}"/>
+                        <td class="text-center">
+                            <a class="btn btn-sm btn-primary" th:href="@{/funcionario/{id}(id=${funcionario.id})}" >
+                                <i class="bi bi-eye"></i>
+                            </a>
+                            <a class="btn btn-sm btn-warning" th:href="@{/funcionario/edit/{id}(id=${funcionario.id})}" >
+                                <i class="bi bi-pen"></i>
+                            </a>
+                            <a class="btn btn-sm btn-danger" th:href="@{/funcionario/delete/{id}(id=${funcionario.id})}" >
+                                <i class="bi bi-trash"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-12 text-center">
+                <h2 class="text-dark" th:if="${funcionarios.empty}">Nenhum funcionario cadastrado</h2>
+            </div>
+<!--            <div class="col-12 col-md-6" th:each="funcionario : ${funcionarios}">-->
+<!--                <div class="card m-3">-->
+<!--                    <div class="card-body">-->
+<!--                        <h4 th:text="${funcionario.name}"></h4>-->
+<!--                        <p th:text="${funcionario.email}"></p>-->
+<!--                        <p th:text="${funcionario.sector}"></p>-->
+<!--                        <p th:text="${funcionario.phone}"></p>-->
+<!--                    </div>-->
+<!--                    <div class="card-footer px-2 bg-white d-flex justify-content-between px-2">-->
+<!--                        <div>-->
+<!--                        </div>-->
+<!--                        <div>-->
+<!--                            <a th:href="@{filial/{id}(id=${funcionario.getId()})}" class="btn btn-outline-success">Read <i class="bi bi-arrow-right-short"></i></a>-->
+<!--                            <a th:href="@{filial/edit/{id}(id=${funcionario.getId()})}" class="btn btn-outline-warning">Edit <i class="bi bi-pen"></i></a>-->
+<!--                            <a th:href="@{filial/delete/{id}(id=${funcionario.getId()})}" class="btn btn-outline-danger">Delete <i class="bi bi-trash"></i></a>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+        </div>
+    </div>
+</div>
+<th:block th:include="footer"></th:block>

@@ -1,0 +1,92 @@
+<th:block th:include="header"></th:block>
+<!-- Page content wrapper-->
+<div id="page-content-wrapper">
+    <!-- Top navigation-->
+    <th:block th:include="nav"></th:block>
+    <!-- Page content-->
+    <div class="container-fluid">
+        <div class="row p-3">
+            <div class="col-12 d-flex justify-content-between p-2">
+                <h3>Filiais</h3> <a class="btn btn-success" href="/filial/create"><i class="bi bi-folder-plus"></i> Novo</a>
+            </div>
+            <div class="col-12">
+                <th:block th:include="alerts"></th:block>
+            </div>
+            <div class="col-12 col-md-6">
+                <form action="/filial/search" method="post">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <select aria-label="Default select example" class="form-select" name="tipopesquisa">
+                                <option hidden>Pesquisar por </option>
+                                <option value="1" selected>Name</option>
+                                <option value="2">Cidade</option>
+                            </select>
+                        </div>
+                        <input aria-describedby="basic-addon1" aria-label="" class="form-control" placeholder="pesquisar..."
+                               type="text" name="search">
+                        <div class="input-group-prepend">
+                            <button class="btn btn-outline-primary" type="submit"><i class="bi bi-search"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-12 text-center">
+                <h2 class="text-dark" th:if="${filiais.empty}">Nenhuma filial cadastrada</h2>
+            </div>
+            <div class="col-12"  th:if="${filiais != null && !filiais.empty}">
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nome</th>
+                        <th>Email</th>
+                        <th>city</th>
+                        <th>opts</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="filial : ${filiais}">
+                        <td th:text="${filial.id}"/>
+                        <td th:text="${filial.name}"/>
+                        <td th:text="${filial.email}"/>
+                        <td th:text="${filial.city}"/>
+                        <td class="text-center">
+                            <a class="btn btn-sm btn-primary" th:href="@{/filial/{id}(id=${filial.id})}" >
+                                <i class="bi bi-eye"></i>
+                            </a>
+                            <a class="btn btn-sm btn-warning" th:href="@{/filial/edit/{id}(id=${filial.id})}" >
+                                <i class="bi bi-pen"></i>
+                            </a>
+                            <a class="btn btn-sm btn-danger" th:href="@{/filial/delete/{id}(id=${filial.id})}" >
+                                <i class="bi bi-trash"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+<!--            <div class="col-12 col-md-6" th:each="filial : ${filiais}">-->
+<!--                <div class="card m-3">-->
+<!--                    <div class="card-body">-->
+<!--                        <h4 th:text="${filial.name}"></h4>-->
+<!--                        <p th:text="${filial.email}"></p>-->
+<!--                        <p th:text="${filial.city}"></p>-->
+<!--                    </div>-->
+<!--                    <div class="card-footer px-2 bg-white d-flex justify-content-between px-2">-->
+<!--                        <div>-->
+<!--                        </div>-->
+<!--                        <div>-->
+<!--                            <a class="btn btn-outline-success" th:href="@{filial/{id}(id=${filial.getId()})}">Read <i-->
+<!--                                    class="bi bi-arrow-right-short"></i></a>-->
+<!--                            <a class="btn btn-outline-warning" th:href="@{filial/edit/{id}(id=${filial.getId()})}">Edit-->
+<!--                                <i class="bi bi-pen"></i></a>-->
+<!--                            <a class="btn btn-outline-danger" th:href="@{filial/delete/{id}(id=${filial.getId()})}">Delete-->
+<!--                                <i class="bi bi-trash"></i></a>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+        </div>
+    </div>
+</div>
+<th:block th:include="footer"></th:block>

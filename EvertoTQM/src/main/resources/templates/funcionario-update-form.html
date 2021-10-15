@@ -1,0 +1,38 @@
+<th:block th:include="header"></th:block>
+<!-- Page content wrapper-->
+<div id="page-content-wrapper">
+    <!-- Top navigation-->
+    <th:block th:include="nav"></th:block>
+    <!-- Page content-->
+    <div class="container-fluid">
+        <form method="post" action="/funcionario/update">
+            <input type="hidden" name="id" th:value="${id}">
+            <div class="mb-3">
+                <label for="name" class="form-label">name</label>
+                <input type="text" class="form-control" id="name" name="name" th:value="${name}">
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">email</label>
+                <input type="text" class="form-control" id="email" name="email" th:value="${email}">
+            </div>
+            <div class="mb-3">
+                <label for="phone" class="form-label">phone</label>
+                <input type="phone" class="form-control" id="phone" name="phone" th:value="${phone}">
+            </div>
+            <div class="mb-3">
+                <label for="sector" class="form-label">phone</label>
+                <input type="sector" class="form-control" id="sector" name="sector" th:value="${sector}">
+            </div>
+            <p th:text="${filialId}"></p>
+            <div class="mb-3">
+                <select class="form-select" id="filial" name="filial">
+                    <label for="filial">Sucursal</label>
+                    <option selected>selecionar uma filial...</option>
+                    <option th:each="filial : ${filiais}" th:value="${filial.id}" th:text="${filial.name}" th:selected="${filial.id==filialId}"></option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-success">Dale</button>
+        </form>
+    </div>
+</div>
+<th:block th:include="footer"></th:block>
